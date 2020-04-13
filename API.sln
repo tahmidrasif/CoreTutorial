@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{86FFA77A-740B-4AEB-9218-07482A140922}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{320E2192-8E64-481A-AE9D-9BC1BDC5CDE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{320E2192-8E64-481A-AE9D-9BC1BDC5CDE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLL", "DLL\DLL.csproj", "{E9EE4893-7619-46E0-BE96-44675AA95230}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DLL", "DLL\DLL.csproj", "{E9EE4893-7619-46E0-BE96-44675AA95230}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{8E6FE836-E606-49E9-A2E0-57A3B3B47365}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E9EE4893-7619-46E0-BE96-44675AA95230}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9EE4893-7619-46E0-BE96-44675AA95230}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9EE4893-7619-46E0-BE96-44675AA95230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E6FE836-E606-49E9-A2E0-57A3B3B47365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E6FE836-E606-49E9-A2E0-57A3B3B47365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E6FE836-E606-49E9-A2E0-57A3B3B47365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E6FE836-E606-49E9-A2E0-57A3B3B47365}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

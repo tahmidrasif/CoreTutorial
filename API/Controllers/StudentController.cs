@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BLL.Request;
+using BLL.Services;
 using DLL.Model;
 using DLL.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,74 +15,56 @@ namespace API.Controllers
 
     public class StudentController : BaseController
     {
-        private readonly IStudentRepository repository;
+        private readonly IStuedntService _service;
 
-        public StudentController(IStudentRepository repository)
+        public StudentController(IStuedntService service)
         {
-            this.repository = repository;
+            this._service = service;
         }
         
         [HttpGet]
         [ApiVersion("1.0")]
-        public ActionResult GetAll()
+        [Authorize(Roles = "teacher")]
+        public async Task<ActionResult> GetAll()
         {
-            var students = repository.GetAllStudent();
+            var students = await _service.GetAllStudentAsync();
             return Ok(students);
         }
 
         [HttpGet]
         [ApiVersion("1.1")]
         [Route("{email}")]
-        public ActionResult GetStudent(string email)
+        [Authorize(Roles = "teacher")]
+        public async Task<ActionResult> GetStudent(string email)
         {
-            var student = repository.GetStudentByEmail(email);
+            var student = await _service.GetStudentByEmailAsync(email);
             return Ok(student);
         }
 
         [HttpPost]
         [ApiVersion("1.1")]
-        public ActionResult Insert(Student oStudent)
+        [Authorize(Roles = "teacher")]
+        public async Task<ActionResult> Insert(StudentRequest oStudent)
         {
-            var students = repository.AddStudent(oStudent);
+            //StudentRequest students = new StudentRequest();
+            var students = await _service.AddStudentAsync(oStudent);
             return Ok(students);
         }
 
+        [HttpPut("{roll}")]
+        [Authorize(Roles = "staff")]
+        public async Task<ActionResult> Update(string roll, [FromForm]  StudentUpdateRequest request)
+        {
+            return Ok(await _service.UpdateAsync(roll, request));
+        }
+
+        [HttpDelete("{roll}")]
+        [Authorize(Roles = "teacher")]
+        public async Task<ActionResult> Delete([FromForm] string roll)
+        {
+            return Ok(await _service.DeleteAsync(roll));
+        }
+
     }
-    //public class Student
-    //{
-    //    public string Name { get; set; }
-    //    public string Email { get; set; }
-    //}
-    //public static class AllStudentInfo
-    //{
-    //    public static List<Student> Students = new List<Student>()
-    //    {
-    //        new Student()
-    //        {
-    //            Email = "tapos.aa@gmail.com",
-    //            Name = "tapos"
-    //        },
-    //        new Student()
-    //        {
-    //            Email = "subir@gmail.com",
-    //            Name = "subir"
-    //        }
-    //    };
-
-    //    public static List<Student> GetStudents()
-    //    {
-    //        return Students;
-    //    }
-
-    //    public static Student GetStudentByEmail(string email)
-    //    {
-    //        return Students.FirstOrDefault(x => x.Email == email);
-    //    }
-    //    public static List<Student> AddStudent(Student aStudent)
-    //    {
-    //        Students.Add(aStudent);
-    //        return Students;
-
-    //    }
-    //}
+    
 }

@@ -1,9 +1,14 @@
 G:\Tahmid\Taposh\API\BLL\bin\Debug\netcoreapp3.1\BLL.deps.json
 G:\Tahmid\Taposh\API\BLL\bin\Debug\netcoreapp3.1\BLL.dll
 G:\Tahmid\Taposh\API\BLL\bin\Debug\netcoreapp3.1\BLL.pdb
+G:\Tahmid\Taposh\API\BLL\bin\Debug\netcoreapp3.1\DLL.dll
+G:\Tahmid\Taposh\API\BLL\bin\Debug\netcoreapp3.1\Utility.dll
+G:\Tahmid\Taposh\API\BLL\bin\Debug\netcoreapp3.1\DLL.pdb
+G:\Tahmid\Taposh\API\BLL\bin\Debug\netcoreapp3.1\Utility.pdb
+G:\Tahmid\Taposh\API\BLL\obj\Debug\netcoreapp3.1\BLL.csprojAssemblyReference.cache
 G:\Tahmid\Taposh\API\BLL\obj\Debug\netcoreapp3.1\BLL.csproj.CoreCompileInputs.cache
 G:\Tahmid\Taposh\API\BLL\obj\Debug\netcoreapp3.1\BLL.AssemblyInfoInputs.cache
 G:\Tahmid\Taposh\API\BLL\obj\Debug\netcoreapp3.1\BLL.AssemblyInfo.cs
+G:\Tahmid\Taposh\API\BLL\obj\Debug\netcoreapp3.1\BLL.csproj.CopyComplete
 G:\Tahmid\Taposh\API\BLL\obj\Debug\netcoreapp3.1\BLL.dll
 G:\Tahmid\Taposh\API\BLL\obj\Debug\netcoreapp3.1\BLL.pdb
-G:\Tahmid\Taposh\API\BLL\obj\Debug\netcoreapp3.1\BLL.csprojAssemblyReference.cache

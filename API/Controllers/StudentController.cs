@@ -15,24 +15,26 @@ namespace API.Controllers
 
     public class StudentController : BaseController
     {
-        private readonly IStuedntService _service;
+        private readonly IStudentService _service;
 
-        public StudentController(IStuedntService service)
+        public StudentController(IStudentService service)
         {
             this._service = service;
         }
         
         [HttpGet]
-        [ApiVersion("1.0")]
-        [Authorize(Roles = "teacher")]
+        //[ApiVersion("1.0")]
+        //[Authorize(Roles = "teacher")]
         public async Task<ActionResult> GetAll()
         {
             var students = await _service.GetAllStudentAsync();
             return Ok(students);
         }
 
+
+
         [HttpGet]
-        [ApiVersion("1.1")]
+        //[ApiVersion("1.1")]
         [Route("{email}")]
         [Authorize(Roles = "teacher")]
         public async Task<ActionResult> GetStudent(string email)
@@ -42,7 +44,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [ApiVersion("1.1")]
+        //[ApiVersion("1.1")]
         [Authorize(Roles = "teacher")]
         public async Task<ActionResult> Insert(StudentRequest oStudent)
         {
@@ -53,7 +55,7 @@ namespace API.Controllers
 
         [HttpPut("{roll}")]
         [Authorize(Roles = "staff")]
-        public async Task<ActionResult> Update(string roll, [FromForm]  StudentUpdateRequest request)
+        public async Task<ActionResult> Update(string roll,   StudentUpdateRequest request)
         {
             return Ok(await _service.UpdateAsync(roll, request));
         }

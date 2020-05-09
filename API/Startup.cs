@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using API.Middleware;
+using API.Policy;
 using BLL;
 using DLL;
 using DLL.ApplicationDbContext;
@@ -11,6 +12,7 @@ using DLL.Model;
 using DLL.Repository;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,8 +25,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-
-
+using Utility;
 
 namespace API
 {
@@ -40,7 +41,7 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddFluentValidation().AddNewtonsoftJson();
+            services.AddControllers().AddFluentValidation().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore) ;
 
             //For Swagger Add
             services.AddSwaggerGen(c =>
@@ -97,12 +98,23 @@ namespace API
                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                };
            });
+
+            //services.AddAuthorization(options => {
+            //    options.AddPolicy("AddToken", policy => policy.Requirements.Add(new TokenPolicy())
+            //});
+
+            services.AddAuthorization(options =>
+        options.AddPolicy("AddToken",
+        policy => policy.Requirements.Add(new TokenPolicy())));
+
         }
 
         private void GetAllDependency(IServiceCollection services)
         {
+            services.AddSingleton<IAuthorizationHandler, TokenPolicyHandler>();
             DLLDependency.ALLDependency(services);
             BLLDependency.ALLDependency(services);
+            UtilityDependecy.ALLDependency(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -129,9 +141,9 @@ namespace API
 
 
             app.UseAuthentication();
+           
+            app.UseRouting();
 
-            app.UseRouting();   
-            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

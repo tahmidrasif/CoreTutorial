@@ -19,7 +19,7 @@ namespace DLL.Repository
 
     public class StudentRepository : BaseRepository<Student>,IStudentRepository
     {
-        private readonly AppDbContext _context;
+        //private readonly AppDbContext _context;
 
         public StudentRepository(AppDbContext context) :base(context)
         {

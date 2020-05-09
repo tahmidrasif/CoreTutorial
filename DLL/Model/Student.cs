@@ -16,6 +16,8 @@ namespace DLL.Model
         public string CreatedBy { get; set; }
         public DateTimeOffset UpdatedAt { get; set; }
         public string UpdatedBy { get; set; }
+        public Department Department { get; set; }
+        public List<CourseStudent> CourseStudents { get; set; }
 
 
     }

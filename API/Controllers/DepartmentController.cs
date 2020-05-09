@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Authorize(Roles = "staff")]
+    //[Authorize(Roles = "staff")]
     public class DepartmentController : BaseController
     {
         private readonly IDepartmentService _departmentService;

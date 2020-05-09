@@ -16,18 +16,24 @@ using DLL.ViewModel;
 
 namespace DLL.ApplicationDbContext
 {
-    public class AppDbContext:IdentityDbContext<AppUser,AppRole,int,IdentityUserClaim<int>,IdentityUserRole<int>,IdentityUserLogin<int>,IdentityRoleClaim<int>,IdentityUserToken<int>>
+    public class AppDbContext : IdentityDbContext<AppUser, AppRole, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
-        public AppDbContext(DbContextOptions options,IHttpContextAccessor httpAccessor):base(options)
+        public AppDbContext(DbContextOptions options, IHttpContextAccessor httpAccessor) : base(options)
         {
             this._httpAccessor = httpAccessor;
         }
         private static readonly MethodInfo _propertyMethod = typeof(EF)
           .GetMethod(nameof(EF.Property), BindingFlags.Static | BindingFlags.Public)?.MakeGenericMethod(typeof(bool));
         private readonly IHttpContextAccessor _httpAccessor;
-        private const string IsDeletedProperty= "IsDeleted";
+        private const string IsDeletedProperty = "IsDeleted";
         public DbSet<Student> Students { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<CustomerBalance> CustomerBalances { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+
+        public DbSet<CourseStudent> CourseStudents { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +46,18 @@ namespace DLL.ApplicationDbContext
                 }
             }
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<CourseStudent>()
+        .HasKey(bc => new { bc.CourseId, bc.StudentId });
+            modelBuilder.Entity<CourseStudent>()
+                .HasOne(bc => bc.Course)
+                .WithMany(b => b.CourseStudents)
+                .HasForeignKey(bc => bc.CourseId);
+            modelBuilder.Entity<CourseStudent>()
+                .HasOne(bc => bc.Student)
+                .WithMany(c => c.CourseStudents)
+                .HasForeignKey(bc => bc.StudentId);
+
+
         }
 
 
@@ -88,7 +106,7 @@ namespace DLL.ApplicationDbContext
             if (httpContext != null)
             {
                 return httpContext.User.FindFirst(CustomJwtClaimName.UserName)?.Value;
-               
+
             }
             return "";
         }

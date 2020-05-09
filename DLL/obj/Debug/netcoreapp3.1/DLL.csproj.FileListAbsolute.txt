@@ -10,3 +10,15 @@ G:\Tahmid\Taposh\API\DLL\obj\Debug\netcoreapp3.1\DLL.dll
 G:\Tahmid\Taposh\API\DLL\obj\Debug\netcoreapp3.1\DLL.pdb
 G:\Tahmid\Taposh\API\DLL\obj\Debug\netcoreapp3.1\DLL.genruntimeconfig.cache
 G:\Tahmid\Taposh\API\DLL\obj\Debug\netcoreapp3.1\DLL.csproj.CoreCompileInputs.cache
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\bin\Debug\netcoreapp3.1\DLL.deps.json
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\bin\Debug\netcoreapp3.1\DLL.runtimeconfig.json
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\bin\Debug\netcoreapp3.1\DLL.runtimeconfig.dev.json
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\bin\Debug\netcoreapp3.1\DLL.dll
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\bin\Debug\netcoreapp3.1\DLL.pdb
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\obj\Debug\netcoreapp3.1\DLL.csprojAssemblyReference.cache
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\obj\Debug\netcoreapp3.1\DLL.csproj.CoreCompileInputs.cache
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\obj\Debug\netcoreapp3.1\DLL.AssemblyInfoInputs.cache
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\obj\Debug\netcoreapp3.1\DLL.AssemblyInfo.cs
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\obj\Debug\netcoreapp3.1\DLL.dll
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\obj\Debug\netcoreapp3.1\DLL.pdb
+G:\Tahmid\Taposh\API_GIT\CoreTutorial\DLL\obj\Debug\netcoreapp3.1\DLL.genruntimeconfig.cache

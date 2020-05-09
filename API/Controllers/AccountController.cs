@@ -36,8 +36,8 @@ namespace API.Controllers
         }
 
 
-        [HttpGet]
-        [Authorize(Roles = "staff")]
+        [HttpPost]
+        [Authorize(Roles = "staff", Policy = "AddToken")]
         public ActionResult Test1()
         {
 
@@ -49,11 +49,30 @@ namespace API.Controllers
         
         //[HttpGet("template:test2")]
         [HttpGet]
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "teacher", Policy = "AddToken")]
         public ActionResult Test2()
         {
-            _accountService.Test(User);
+            //_accountService.Test(User);
             return Ok("Test2");
+
+            //return Ok("Ok");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "teacher,staff", Policy = "AddToken")]
+        public async Task<ActionResult> Logout()
+        {
+           
+             return Ok(await _accountService.LogOut(User));
+
+            //return Ok("Ok");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> GetNewToken(RefreshTokenRequest refreshToken)
+        {
+
+            return Ok(await _accountService.RefreshToken(refreshToken));
 
             //return Ok("Ok");
         }
